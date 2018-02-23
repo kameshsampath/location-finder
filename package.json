@@ -1,0 +1,33 @@
+{
+  "name": "location-finder",
+  "version": "0.0.1",
+  "description": "A serverless implementation of Google Maps reverse geocoding",
+  "main": "dist/bundle.js",
+  "author": {
+    "email": "kamesh.sampath@hotmail.com",
+    "name": "Kamesh Sampath",
+    "url": "https://blogs.workspace7.org"
+  },
+  "license": "ASL",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "create-package": "wsk -i package create redhat-developers",
+    "deploy": "wsk -i action update redhat-developers/location-finder dist/bundle.js --kind nodejs:8",
+    "undeploy": "wsk -i action delete redhat-developers/location-finder",
+    "dev": "wsk -i action invoke redhat-developers/location-finder --result -p coords '{\"lat\":\"51.5121378\",\"lng\":\"-0.1269017\"}'"
+  },
+  "dependencies": {
+    "@google/maps": "^0.4.5",
+    "dotenv": "^5.0.0",
+    "dotenv-webpack": "^1.5.4",
+    "eslint": "^4.18.1"
+  },
+  "keywords": [
+    "openwhisk",
+    "nodejs",
+    "googlemaps"
+  ],
+  "devDependencies": {
+    "webpack": "^3.11.0"
+  }
+}

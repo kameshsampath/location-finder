@@ -1,0 +1,55 @@
+= Location finder
+A small example to show how we can user serverless to reverse geocode a latitude/longitude. This example 
+could be deployed on any serverless platform, the instructions here will help to deploy it on OpenWhisk
+
+== Pre-requisites
+
+* Access to OpenWhisk serverless platform
+* OpenWhisk CLI configured for the platform
+* Google Maps API Key 
+
+== Build and Deploy
+
+1. Copy `template.local.env` to `.env`
+2. Update the env variables as needed
+
+=== Build
+
+Create the package to deploy function 
+
+[code,sh]
+----
+npm run create-package
+----
+
+Build the nodejs application 
+
+[code,sh]
+----
+npm run build
+----
+
+Deploy the function to OpenWhisk
+
+[code,sh]
+----
+npm run deploy
+----
+
+Test the function 
+
+[code,sh]
+----
+npm run dev
+----
+
+The above command should return you a response like:
+
+[code,json]
+----
+{
+  "location": "New Row, London WC2N 4LH, UK",
+  "status": "OK"
+}
+----
+
