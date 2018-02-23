@@ -12,7 +12,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "create-package": "wsk -i package create redhat-developers",
-    "deploy": "wsk -i action update redhat-developers/location-finder dist/bundle.js --kind nodejs:8",
+    "deploy": "wsk -i action update redhat-developers/location-finder dist/bundle.js --kind nodejs:8 --web=true",
     "undeploy": "wsk -i action delete redhat-developers/location-finder",
     "dev": "wsk -i action invoke redhat-developers/location-finder --result -p coords '{\"lat\":\"51.5121378\",\"lng\":\"-0.1269017\"}'"
   },

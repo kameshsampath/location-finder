@@ -53,3 +53,24 @@ The above command should return you a response like:
 }
 ----
 
+=== API
+
+If OpenWhisk API Gateway is deployed then we can create the REST API for action:
+
+[code,json]
+----
+wsk -i  api create  /my /location get redhat-developers/location-finder <1>
+wsk -i  api list  <2>
+----
+
+<1> create the API with base path as `my` and API path as `location` with HTTP verb as `get`
+<2> This will list the APIs that are available in API Gateway and the URL which can be used to invoke it
+
+==== Calling API 
+
+[code,json]
+----
+curl -H "Content-Type: application/json" -X GET  -d '{"coords":{"lat":"51.5121378","lng":"-0.1269017"}}' [URL from above]
+----
+
+The command above should return the same response as above
